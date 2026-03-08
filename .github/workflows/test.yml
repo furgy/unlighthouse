@@ -20,7 +20,7 @@ jobs:
       - name: Check version bump
         run: |
           current_version=$(cat VERSION)
-          previous_version=$(git show main:VERSION 2>/dev/null || echo "")
+          previous_version=$(git show HEAD^:VERSION 2>/dev/null || echo "")
           if [ -z "$previous_version" ]; then
             echo "No previous version found, skipping version check"
           elif [ "$current_version" = "$previous_version" ]; then
